@@ -1,7 +1,11 @@
-FROM ubuntu
+FROM python 3.6.15-alpine3.15
 
-MAINTAINER sofija
+RUN pip install flask
 
-RUN apt-get update
+COPY . /opt/
 
-CMD ["echo", "Hello World"]
+EXPOSE  8080
+
+WORKDIR  /opt
+
+ENTRYPOINT  ["python", "app.py"]
